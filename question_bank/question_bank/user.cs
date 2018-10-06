@@ -27,6 +27,31 @@ namespace question_bank
             this.semester = semester;
             this.year = year;
         }
-        
+        public string get_faculty_id()
+        {
+            return faculty_id;
+        }
+        public string get_faculty_name()
+        {
+            return name;
+        }
+        public string get_subject()
+        {
+            return subject;
+
+        }
+        public string get_branch()
+        {
+            return branch;
+        }
+        public string get_semester()
+        {
+            return semester;
+
+        }
+        public string get_year()
+        {
+            return year;
+        }
     }
 }
