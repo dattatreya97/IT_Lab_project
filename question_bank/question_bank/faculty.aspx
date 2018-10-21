@@ -4,10 +4,7 @@
         .auto-style1 {
             margin-left: 120px;
         }
-        .auto-style2 {
-            margin-left: 200px;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <p>
@@ -20,13 +17,13 @@
     <p>
         &nbsp;<asp:Label ID="Label3" runat="server" Text="Question"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="question" runat="server" CssClass="offset-sm-0" Width="582px"></asp:TextBox>
+        <asp:TextBox ID="question" runat="server" CssClass="offset-sm-0" Width="582px" CausesValidation="True"></asp:TextBox>
         <asp:RequiredFieldValidator ID="question_validator" runat="server" ControlToValidate="question" ErrorMessage="Please enter the question"></asp:RequiredFieldValidator>
     </p>
     <p>
         <asp:Label ID="Label4" runat="server" Text="Marks"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:DropDownList ID="marks" runat="server">
+        <asp:DropDownList ID="marks" runat="server" CausesValidation="True">
         </asp:DropDownList>
         <asp:RequiredFieldValidator ID="marks_validator" runat="server" ControlToValidate="marks" ErrorMessage="Please choose the marks"></asp:RequiredFieldValidator>
     </p>
@@ -48,26 +45,53 @@
     </p>
     <p>
         &nbsp;</p>
-    <p class="auto-style2">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-hover table-striped" DataSourceID="questions_added">
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" Width="631px">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
-                <asp:BoundField DataField="question_name" HeaderText="question" SortExpression="question_name" />
-                <asp:BoundField DataField="marks" HeaderText="marks" SortExpression="marks" />
-                <asp:BoundField DataField="mcq" HeaderText="mcq" SortExpression="mcq" />
+                <asp:CommandField ShowEditButton="true" ShowDeleteButton="true"  CausesValidation="false"/>
+                <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" Visible="False" />
+                <asp:TemplateField HeaderText="question_name" SortExpression="question_name">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("question_name") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("question_name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="marks" SortExpression="marks">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("marks") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("marks") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="mcq" SortExpression="mcq">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("mcq") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("mcq") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </p>
     <p>
-        <asp:SqlDataSource ID="questions_added" runat="server" ConnectionString="Data Source=(localdb)\MSSQLlocalDB;Initial Catalog=mini_project;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [question_name], [marks], [mcq] FROM [questions] WHERE ([faculty_name] = @faculty_name)">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+    <p>
+        &nbsp;</p>
+    <p>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(localdb)\MSSQLlocalDB;Initial Catalog=mini_project;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [Id], [question_name], [marks], [mcq] FROM [questions] WHERE ([faculty_name] = @faculty_name)"
+            UpdateCommand="UPDATE questions SET question_name=@question_name,marks=@marks,mcq=@mcq WHERE id=@id"
+            DeleteCommand="DELETE FROM questions WHERE id=@id" >
             <SelectParameters>
                 <asp:QueryStringParameter Name="faculty_name" QueryStringField="username" Type="String" />
             </SelectParameters>
         </asp:SqlDataSource>
     </p>
-    <p>
-        &nbsp;</p>
     <p>
         &nbsp;</p>
     <p>

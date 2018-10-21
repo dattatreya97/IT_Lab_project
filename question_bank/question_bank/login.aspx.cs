@@ -57,6 +57,9 @@ namespace question_bank
                         else if (isCoordinator == 1)
                         {
                             //go to coordinator.aspx;
+                            Session["subject"] = faculty.get_subject();
+                            Session["year"] = faculty.get_year();
+                            Session["branch"] = faculty.get_branch();
                             Response.Redirect("coordinator.aspx?username=" + reader["name"].ToString());
                         }
                         else

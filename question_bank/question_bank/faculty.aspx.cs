@@ -9,7 +9,8 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 
 namespace question_bank
-{
+{   
+    
     public partial class faculty : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -45,19 +46,20 @@ namespace question_bank
         }
         protected void add_question(object sender, EventArgs e)
         {
-            if(question_validator.IsValid && marks_validator.IsValid)
+            user faculty = (user)Session["user_logged_in"];
+            if (question_validator.IsValid && marks_validator.IsValid)
             {
-                user faculty = (user)Session["user_logged_in"];
+                
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source = (localdb)\\MSSQLlocalDB;Initial Catalog=mini_project;Integrated Security=True";
                 try
                 {
                     con.Open();
 
-                    int isMcQ = 0;
+                    string isMcQ = "No";
                     if (mcq.Checked)
                     {
-                        isMcQ = 1;
+                        isMcQ = "Yes";
                     }
                     String query = "INSERT INTO questions(question_name,marks,mcq,faculty_id,faculty_name,subject,branch,semester,year) VALUES(";
                     query += "@question_name,@marks,@isMcq,@faculty_id,@faculty_name,@subject,@branch,@semester,@year)";
@@ -96,11 +98,37 @@ namespace question_bank
                 {
                     con.Close();
                 }
-            }
-            
 
-            
+                //to bind gridview after update
+                //try
+                //{
+                //    con.Open();
+                //    string q = "Select id,question_name,marks,mcq FROM questions WHERE faculty_name = '"+faculty.get_faculty_id()+"'";
+                //    SqlDataAdapter ad = new SqlDataAdapter(q, con);
+                //    DataTable dt = new DataTable();
+                //    ad.Fill(dt);
+                //    if (dt.Rows.Count > 0)
+                //    {
+                //        GridView1.DataSource = dt;
+                //        GridView1.DataBind();
+                //    }
 
+                //}
+                //catch (Exception ex)
+                //{
+
+                //}
+                //finally
+                //{
+                //    con.Close();
+                //}
+                GridView1.DataSourceID = SqlDataSource1.ID;
+
+            }                   
         }
+
+        
+
+        
     }
 }
