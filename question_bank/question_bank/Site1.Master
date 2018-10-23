@@ -6,6 +6,9 @@
 <head runat="server">
     <title></title>
     <link  href="Content/bootstrap.css" rel="stylesheet"/>
+    <style>
+        .hiddencol { display: none; }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     </head>

@@ -88,5 +88,10 @@ namespace question_bank
             }
             
         }
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            Page.Theme = "faculty";
+        }
     }
 }
