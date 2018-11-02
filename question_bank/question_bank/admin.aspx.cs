@@ -25,7 +25,8 @@ namespace question_bank
                     //enabling logout button
                     Site1 m = (Site1)Master;
                     m.show_name_and_logout();
-                    m.set_name(Request.QueryString["username"].ToString());
+                    HttpCookie user_new = Request.Cookies["user_new"];
+                    m.set_name(Request.QueryString["username"].ToString()+" | "+user_new["user_type"]);
                 }
                 else
                 {
@@ -33,10 +34,13 @@ namespace question_bank
                 }
             }
         }
-
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            Page.Theme = "faculty";
+        }
         protected void create_user(object sender, EventArgs e)
         {
-            if(faculty_validator.IsValid && name_validator.IsValid && password_validator.IsValid && subject_validator.IsValid && branch_validator.IsValid && semester_validator.IsValid && year_validator.IsValid)
+            if(faculty_validator.IsValid && name_validator.IsValid && password_validator.IsValid  && semester_validator.IsValid && year_validator.IsValid)
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source = (localdb)\\MSSQLlocalDB;Initial Catalog=mini_project;Integrated Security=True";
@@ -62,8 +66,8 @@ namespace question_bank
                     cmd.Parameters.AddWithValue("@password", password.Text);
                     cmd.Parameters.AddWithValue("@isAdmin", isAdmin);
                     cmd.Parameters.AddWithValue("@isCoordinator", isCordinator);
-                    cmd.Parameters.AddWithValue("@subject", subject.Text);
-                    cmd.Parameters.AddWithValue("@branch", branch.Text);
+                    cmd.Parameters.AddWithValue("@subject", subject.Items[subject.SelectedIndex].Value);
+                    cmd.Parameters.AddWithValue("@branch", branch.Items[branch.SelectedIndex].Value);
                     cmd.Parameters.AddWithValue("@semester", semester.Text);
                     cmd.Parameters.AddWithValue("@year", year.Text);
                     int rows_affected = cmd.ExecuteNonQuery();
@@ -79,10 +83,16 @@ namespace question_bank
                     }
                     result.Visible = true;
                     result.Enabled = true;
+
+                    faculty_id.Text = "";
+                    password.Text = "";
+                    name.Text = "";
+                    semester.Text = "";
+                    year.Text = "";
                 }
                 catch (Exception ex)
                 {
-                    result.Text = "Fail,Please contact developer";
+                    result.Text = ex.Message;
                     result.ForeColor = System.Drawing.Color.FromName("Red");
                     result.Visible = true;
                     result.Enabled = true;
@@ -96,6 +106,16 @@ namespace question_bank
             {
                //give summary
             }
+        }
+
+        protected void show_question_paper(object sender, EventArgs e)
+        {
+            Response.Redirect("paper.aspx?username=" + Request.QueryString["username"]);
+        }
+
+        protected void add_branch(object sender, EventArgs e)
+        {
+            Response.Redirect("add_branch.aspx?username=" + Request.QueryString["username"]);
         }
     }
 }

@@ -49,25 +49,39 @@ namespace question_bank
                         int isCoordinator = Int32.Parse(reader["isCoordinator"].ToString());
                         user faculty = new user(reader["faculty_id"].ToString(), reader["name"].ToString(), reader["subject"].ToString(), isAdmin, isCoordinator, reader["branch"].ToString(), reader["semester"].ToString(), reader["year"].ToString());
                         Session["user_logged_in"] = faculty;
+
+                        HttpCookie user_new = new HttpCookie("user_new");
+                        
                         if (isAdmin == 1)
                         {
                             //go to admin.aspx;
+                            user_new["user_type"] = "Administrator";
+                            Response.Cookies.Add(user_new);
                             Response.Redirect("admin.aspx?username="+reader["name"].ToString());
+                            
                         }
                         else if (isCoordinator == 1)
                         {
                             //go to coordinator.aspx;
+                            Session["subject"] = faculty.get_subject();
+                            Session["year"] = faculty.get_year();
+                            Session["branch"] = faculty.get_branch();
+                            user_new["user_type"] = "Coordinator";
+                            Response.Cookies.Add(user_new);
                             Response.Redirect("coordinator.aspx?username=" + reader["name"].ToString());
                         }
                         else
                         {
                             //go to faculty.aspx;
+                            user_new["user_type"] = "Faculty";
+                            Response.Cookies.Add(user_new);
                             Response.Redirect("faculty.aspx?username=" + reader["name"].ToString());
                         }
                     }
                     else
                     {
                         //invalid user
+                        
                         Response.Redirect("login.aspx");
                     }
                 }catch(Exception ex)
@@ -84,6 +98,11 @@ namespace question_bank
                 Response.Redirect("login.aspx");
             }
             
+        }
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            Page.Theme = "faculty";
         }
     }
 }

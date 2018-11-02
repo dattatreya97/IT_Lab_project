@@ -14,13 +14,13 @@
     <br />
 </p>
 <p class="auto-style3">
-    <asp:Label ID="Label1" runat="server" Text="Username" CssClass="label label-default"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="Username" CssClass="headings"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="username" runat="server"></asp:TextBox>
     <asp:RequiredFieldValidator ID="username_validator" runat="server" ControlToValidate="username" ErrorMessage="Please enter username"></asp:RequiredFieldValidator>
 </p>
 <p class="auto-style3">
-    <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="Password" CssClass="headings"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
     <asp:RequiredFieldValidator ID="password_validator" runat="server" ControlToValidate="username" ErrorMessage="Please enter password"></asp:RequiredFieldValidator>
