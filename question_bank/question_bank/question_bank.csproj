@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="add_branch.aspx" />
     <Content Include="admin.aspx" />
+    <Content Include="App_Themes\faculty\StyleSheet1.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

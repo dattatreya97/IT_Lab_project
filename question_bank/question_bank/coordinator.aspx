@@ -4,7 +4,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <p>
         <br />
-        <asp:Label ID="Label2" runat="server" Text="Questions from faculty"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Questions from faculty" CssClass="headings"></asp:Label>
     </p>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" AllowPaging="True" PageSize="5">
@@ -36,18 +36,20 @@
         </asp:SqlDataSource>
     </p>
     <p>
-        <asp:Button ID="add" runat="server" OnClick="add_questions" Text="Add questions" />
+        <asp:Button ID="add" runat="server" OnClick="add_questions" Text="Add questions" CssClass="btn btn-primary" />
     &nbsp;&nbsp;
-        <asp:Label ID="result" runat="server" Enabled="False" Text="Label" Visible="False"></asp:Label>
+        <asp:Label ID="result" runat="server" Enabled="False" Text="Label" Visible="False" CssClass="status"></asp:Label>
     </p>
     <p>
     </p>
     <p>
-        <asp:Label ID="Label3" runat="server" Text="Question chosen by you"></asp:Label>
+    </p>
+    <p>
+    </p>
+    <p>
+        <asp:Label ID="Label3" runat="server" Text="Question chosen by you" CssClass="headings"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
-    <p>
-        &nbsp;</p>
     <p>
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="Id">
             <Columns>

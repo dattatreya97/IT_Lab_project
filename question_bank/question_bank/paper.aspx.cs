@@ -21,7 +21,8 @@ namespace question_bank
                     //enabling logout button
                     Site1 m = (Site1)Master;
                     m.show_name_and_logout();
-                    m.set_name(Request.QueryString["username"].ToString());
+                    HttpCookie user_new = Request.Cookies["user_new"];
+                    m.set_name(Request.QueryString["username"].ToString() + " | " + user_new["user_type"]);
                 }
                 else
                 {

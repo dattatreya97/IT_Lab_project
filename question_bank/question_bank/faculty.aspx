@@ -12,16 +12,16 @@
     <p>
         &nbsp;</p>
     <p>
-        <asp:Label ID="Label2" runat="server" Text="Add Question"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Add Question" CssClass="headings"></asp:Label>
     </p>
     <p>
-        &nbsp;<asp:Label ID="Label3" runat="server" Text="Question"></asp:Label>
+        &nbsp;<asp:Label ID="Label3" runat="server" Text="Question" CssClass="labelinfo"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="question" runat="server" CssClass="offset-sm-0" Width="582px" CausesValidation="True"></asp:TextBox>
         <asp:RequiredFieldValidator ID="question_validator" runat="server" ControlToValidate="question" ErrorMessage="Please enter the question"></asp:RequiredFieldValidator>
     </p>
     <p>
-        <asp:Label ID="Label4" runat="server" Text="Marks"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text="Marks" CssClass="labelinfo"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="marks" runat="server" CausesValidation="True">
         </asp:DropDownList>
@@ -36,12 +36,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" OnClick="add_question" Text="Add" />
 &nbsp;&nbsp;&nbsp;
-        <asp:Label ID="result" runat="server" Enabled="False" Text="Label" Visible="False"></asp:Label>
+        <asp:Label ID="result" runat="server" Enabled="False" Text="Label" Visible="False" CssClass="status"></asp:Label>
     </p>
     <p>
         &nbsp;</p>
     <p>
-        <asp:Label ID="Label5" runat="server" Text="Questions added"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Text="Questions added" CssClass="headings"></asp:Label>
     </p>
     <p>
         &nbsp;</p>

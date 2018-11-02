@@ -10,7 +10,7 @@
     <p>
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="Label2" runat="server" Text="Branch"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Branch" CssClass="labelinfo"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="branch" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="branch" DataValueField="branch">
         </asp:DropDownList>
@@ -18,7 +18,7 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(localdb)\MSSQLlocalDB;Initial Catalog=mini_project;Integrated Security=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT DISTINCT [branch] FROM [questions_final]"></asp:SqlDataSource>
     </p>
     <p class="auto-style1">
-        <asp:Label ID="Label3" runat="server" Text="Subject"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="Subject" CssClass="labelinfo"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="subject" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="subject" DataValueField="subject">
         </asp:DropDownList>
@@ -30,7 +30,7 @@
         </asp:SqlDataSource>
     </p>
     <p class="auto-style1">
-        <asp:Label ID="Label4" runat="server" Text="Semester"></asp:Label>
+        <asp:Label ID="Label4" runat="server" Text="Semester" CssClass="labelinfo"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="semester" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="semester" DataValueField="semester">
         </asp:DropDownList>
@@ -43,7 +43,7 @@
         </asp:SqlDataSource>
     </p>
     <p class="auto-style1">
-        <asp:Label ID="Label5" runat="server" Text="Year"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Text="Year" CssClass="labelinfo"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:DropDownList ID="year" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="year" DataValueField="year">
         </asp:DropDownList>
